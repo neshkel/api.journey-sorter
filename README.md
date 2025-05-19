@@ -7,21 +7,23 @@ Built using modern PHP features: `readonly`, `constructor property promotion`, a
 
 ## ✈️ Features
 
-- Sorts unordered travel steps (boarding cards) into the correct journey order
-- Outputs clean, human-readable travel instructions
-- Uses modern PHP 8.1 features (`enum`, `readonly`, promoted constructor properties)
-- API-style interface usable from other PHP systems or HTTP
+- ✅ Sorts unordered travel steps (boarding cards)
+- ✅ Outputs clean, human-readable itinerary
+- ✅ Uses PHP 8.1+ features (`readonly`, `enum`, `constructor promotion`)
+- ✅ Secured access via IP / referer whitelist
+- ✅ Simple internal API design — no framework needed
 
 ---
 
-## 🚀 Getting Started
+## 📦 Requirements
 
-### 📦 Requirements
+- PHP 8.1 or higher
+- Apache or Nginx web server (or `php -S`)
+- `.htaccess` routing enabled (for Apache)
 
-- PHP **8.1+**
-- A local web server (Apache, Nginx or PHP built-in server)
+---
 
-### 📁 Project structure
+## 📁 Project structure
 
 ├── index.php # Entry point (router)
 <br>
@@ -29,39 +31,69 @@ Built using modern PHP features: `readonly`, `constructor property promotion`, a
 <br>
 ├── JourneySorter.php # Sorting and journey description
 <br>
-├── BoardingCard.php # Data model (readonly)
+├── BoardingCard.php # Readonly travel step data model
 <br>
 ├── TransportType.php # Enum: train, bus, flight
 <br>
-├── authorized.json # Optional IP/url whitelist
+├── authorized.json # IP/url whitelist (optional)
+<br>
+├── .htaccess # (If using Apache)
 
-### 🛠 Installation
+---
 
-Clone the repository, place files in your server directory.
+## 🛠 Setup
 
-Start a local PHP server if needed:
-```bash
-php -S localhost:8000
+1. Clone or upload the files to your server.
+2. Make sure your server runs PHP 8.1+.
+3. Access the API at:
+[https://www.yourdomain.com/api/journey](https://www.yourdomain.com/api/journey)
+> Or locally via `php -S localhost:8000`
+
+---
+
+## 🔐 IP/URL Authorization
+
+If `authorized.json` exists, only matching IPs or HTTP referers will be allowed.
+
+```json
+{
+  "allowed_ips": ["193.253.182.95"],
+  "allowed_urls": ["https://www.api.transport.beyondnexus.fr"]
+}
 ```
 
-Access the API at:
-```bash
-http://localhost:8000/api/journey
+If the file does not exist, no restriction is applied.
+
+Unauthorized access will return:
+
+```json
+{
+  "status": "FORBIDDEN",
+  "message": "Access denied.",
+  "hint": "Your IP or referer is not authorized to use this API."
+}
 ```
 
-🔍 Example Output
+---
+
+## 🔍 API Usage
+
+---
+
+### 📥 Endpoint
+
+```bash
+GET /api/journey
+```
+
+### 📤 Example Output
+
 ```json
 {
   "status": "SUCCESS",
   "message": "Your itinerary has been successfully sorted.",
   "data": {
-    "sorted_journey": [
-      {
-        "from": "Madrid",
-        "to": "Barcelona",
-        ...
-      }
-    ],
+    "sorted_journey": [ ... ],
     "final_result": [
       "Take train 78A from Madrid to Barcelona. Sit in seat 45B.",
       "...",
@@ -76,26 +108,27 @@ http://localhost:8000/api/journey
 }
 ```
 
-🔒 Security (optional)
+### 🧪 Testing
 
-You may restrict API access using the authorized.json file:
-```json
-{
-  "allowed_ips": ["192.168.1.15"],
-  "allowed_urls": ["https://yourdomain.com"]
-}
+Locally via browser:
+
+```bash
+http://localhost:8000/api/journey
 ```
 
-✅ Tech stack
+Via cURL:
 
-PHP 8.1+
+```bash
+curl -X GET http://localhost:8000/api/journey
+```
 
-No framework (can be integrated into Symfony, Laravel, Slim...)
+---
 
-📄 License
+## 📄 License
 
-MIT — Free to use, modify, and distribute.
+MIT — Use, modify, share freely.
 
-✉️ Contact
 
-Developed by [Blache Nolwenn](https://www.beyondnexus.fr)
+## 👨‍💻 Developed by
+
+[BLACHE Nolwenn](https://www.beyondnexus.fr)
