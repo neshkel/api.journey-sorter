@@ -80,6 +80,18 @@ Unauthorized access will return:
 
 ---
 
+## 🏠 Root Path (`/`)
+
+When accessing the base URL of the API (e.g. `http://localhost/` or `https://api.yourdomain.com/`),  
+you'll be presented with a **HTML help page** describing:
+
+- Available endpoints (e.g. `/api/journey`)
+- Example cURL request
+- Explanation of the JSON structure
+- Authorization method
+
+This serves as a lightweight API documentation homepage.
+
 ### 📥 Endpoint
 
 ```bash
