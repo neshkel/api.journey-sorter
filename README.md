@@ -143,4 +143,4 @@ MIT — Use, modify, share freely.
 
 ## 👨‍💻 Developed by
 
-[BLACHE Nolwenn](https://www.beyondnexus.fr)
+[BLACHE Nolwenn / BeyondNexusTech](https://www.beyondnexus.fr)
