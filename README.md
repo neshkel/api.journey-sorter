@@ -9,7 +9,7 @@ Built using modern PHP features: `readonly`, `constructor property promotion`, a
 
 - ✅ Sorts unordered travel steps (boarding cards)
 - ✅ Outputs clean, human-readable itinerary
-- ✅ Uses PHP 8.1+ features (`readonly`, `enum`, `constructor promotion`)
+- ✅ Uses PHP 8.2+ features (`readonly`, `enum`, `constructor promotion`)
 - ✅ Secured access via IP / referer whitelist
 - ✅ Simple internal API design — no framework needed
 
@@ -17,7 +17,7 @@ Built using modern PHP features: `readonly`, `constructor property promotion`, a
 
 ## 📦 Requirements
 
-- PHP 8.1 or higher
+- PHP 8.2 or higher
 - Apache or Nginx web server (or `php -S`)
 - `.htaccess` routing enabled (for Apache)
 
@@ -44,7 +44,7 @@ Built using modern PHP features: `readonly`, `constructor property promotion`, a
 ## 🛠 Setup
 
 1. Clone or upload the files to your server.
-2. Make sure your server runs PHP 8.1+.
+2. Make sure your server runs PHP 8.2+.
 3. Access the API at:
 [https://www.yourdomain.com/api/journey](https://www.yourdomain.com/api/journey)
 > Or locally via `php -S localhost:8000`
